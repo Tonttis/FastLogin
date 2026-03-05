@@ -108,7 +108,7 @@ public class BungeeListener implements PluginMessageListener {
     }
 
     private void onRegisterMessage(Player player, String playerName) {
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+        plugin.getScheduler().runAsync(() -> {
             AuthPlugin<Player> authPlugin = plugin.getCore().getAuthPluginHook();
             try {
                 //we need to check if the player is registered on Bukkit too
