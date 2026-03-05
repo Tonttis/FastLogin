@@ -68,11 +68,11 @@ public class ConnectionListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent joinEvent) {
         Player player = joinEvent.getPlayer();
 
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+        plugin.getScheduler().runTaskLater(() -> {
             delayForceLogin(player);
             // delay the login process to let auth plugins initialize the player
             // Magic number however as there is no direct event from those plugins
-        }, DELAY_LOGIN);
+        }, DELAY_LOGIN, player);
     }
 
     private void delayForceLogin(Player player) {
@@ -89,7 +89,7 @@ public class ConnectionListener implements Listener {
                 FloodgatePlayer floodgatePlayer = floodgateService.getBedrockPlayer(player.getUniqueId());
                 if (floodgatePlayer != null) {
                     Runnable floodgateAuthTask = new FloodgateAuthTask(plugin.getCore(), player, floodgatePlayer);
-                    Bukkit.getScheduler().runTaskAsynchronously(plugin, floodgateAuthTask);
+                    plugin.getScheduler().runAsync(floodgateAuthTask);
                     plugin.getBungeeManager().markJoinEventFired(player);
                     return;
                 }
@@ -101,7 +101,7 @@ public class ConnectionListener implements Listener {
                 + "when the command from the proxy is received");
         } else {
             Runnable forceLoginTask = new ForceLoginTask(plugin.getCore(), player, session);
-            Bukkit.getScheduler().runTaskAsynchronously(plugin, forceLoginTask);
+            plugin.getScheduler().runAsync(forceLoginTask);
         }
 
         plugin.getBungeeManager().markJoinEventFired(player);
