@@ -54,7 +54,7 @@ public class XAuthHook implements AuthPlugin<Player> {
     @Override
     public boolean forceLogin(Player player) {
         //not thread-safe
-        Future<Boolean> future = Bukkit.getScheduler().callSyncMethod(plugin, () -> {
+        Future<Boolean> future = plugin.getScheduler().callSyncMethod(() -> {
             xAuthPlayer xAuthPlayer = xAuthPlugin.getPlayerManager().getPlayer(player);
             if (xAuthPlayer != null) {
                 if (xAuthPlayer.isAuthenticated()) {
@@ -90,7 +90,7 @@ public class XAuthHook implements AuthPlugin<Player> {
     @Override
     public boolean forceRegister(Player player, final String password) {
         //not thread-safe
-        Future<Boolean> future = Bukkit.getScheduler().callSyncMethod(xAuthPlugin, () -> {
+        Future<Boolean> future = plugin.getScheduler().callSyncMethod(() -> {
             xAuthPlayer xAuthPlayer = xAuthPlugin.getPlayerManager().getPlayer(player);
             //this should run async because the plugin executes a sql query, but the method
             //accesses non thread-safe collections :(
