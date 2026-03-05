@@ -13,7 +13,7 @@ dev-url: ${project.url}
 
 # This plugin doesn't have to be transformed for compatibility with Minecraft >= 1.13
 api-version: '1.13'
-
+folia-supported: true
 softdepend:
     # We depend on either ProtocolLib or ProtocolSupport
     - ProtocolSupport
