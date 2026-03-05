@@ -1,5 +1,5 @@
 <!--
-<maven.compiler.release>8</maven.compiler.release>
+<maven.compiler.release>21</maven.compiler.release>
     SPDX-License-Identifier: MIT
 <maven.compiler.release>21</maven.compiler.release>
     The MIT License (MIT)
@@ -48,7 +48,7 @@
         <!-- Set default for non-git clones -->
         <git.commit.id>Unknown</git.commit.id>
 
-        <maven.compiler.release>8</maven.compiler.release>
+        <maven.compiler.release>21</maven.compiler.release>
 
         <lombook.version>1.18.34</lombook.version>
 
