@@ -53,7 +53,7 @@ public class FloodgateAuthTask extends FloodgateManagement<Player, CommandSender
 
         // run login task
         Runnable forceLoginTask = new ForceLoginTask(core.getPlugin().getCore(), player, session);
-        Bukkit.getScheduler().runTaskAsynchronously(core.getPlugin(), forceLoginTask);
+        core.getPlugin().getScheduler().runAsync(forceLoginTask);
     }
 
     protected String getName(Player player) {
