@@ -65,16 +65,22 @@ public class DeleteCommand implements TabExecutor {
             return false;
         }
 
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+        plugin.getScheduler().runAsync(() -> {
             int count = plugin.getCore().getStorage().deleteProfile(args[0]);
             if (!(sender instanceof ConsoleCommandSender)) {
-                Bukkit.getScheduler().runTask(plugin, () -> {
+Runnable task = () -> {
                     if (count == 0) {
                         sender.sendMessage("Error: No profile entries found!");
                     } else {
                         sender.sendMessage("Deleted " + count + " matching profile entries");
                     }
-                });
+                };
+
+                if (sender instanceof org.bukkit.entity.Entity) {
+                    plugin.getScheduler().runSync(task, (org.bukkit.entity.Entity) sender);
+                } else {
+                    plugin.getScheduler().runSync(task);
+                }
             }
         });
 
