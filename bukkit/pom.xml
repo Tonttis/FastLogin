@@ -1,5 +1,4 @@
 <!--
-
     SPDX-License-Identifier: MIT
 
     The MIT License (MIT)
@@ -78,23 +77,24 @@
                         <relocation>
                             <pattern>com.google.common</pattern>
                             <shadedPattern>fastlogin.guava</shadedPattern>
-                            <excludes>
-                                <exclude>com.google.common.collect.Multimap</exclude>
-                            </excludes>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.google.common.collect.Multimap</pattern>
+                            <shadedPattern>fastlogin.guava</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>io.papermc.lib</pattern>
                             <shadedPattern>fastlogin.paperlib</shadedPattern>
                         </relocation>
                     </relocations>
-                    <!-- Rename the service file too to let SLF4J api find our own relocated jdk logger -->
-                    <!-- Located in META-INF/services -->
-                    <transformers>
-                        <transformer
-                                implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                    </transformers>
                     <minimizeJar>true</minimizeJar>
                     <filters>
+                        <filter>
+                            <artifact>org.slf4j:*</artifact>
+                            <includes>
+                                <include>**</include>
+                            </includes>
+                        </filter>
                         <filter>
                             <artifact>*:*</artifact>
                             <excludes>
@@ -116,61 +116,49 @@
     </build>
 
     <repositories>
-        <!-- PaperSpigot API, PaperLib, datafixupper and bungeecord-chat -->
         <repository>
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
-
-        <!-- ProtocolLib -->
         <repository>
             <id>dmulloy2-repo</id>
             <url>https://repo.dmulloy2.net/repository/public/</url>
         </repository>
-
-        <!-- AuthMe Reloaded, xAuth and LoginSecurity -->
         <repository>
             <id>codemc-releases</id>
             <url>https://repo.codemc.io/repository/maven-public/</url>
-            <snapshots>
+            <releases>
                 <enabled>false</enabled>
-            </snapshots>
+            </releases>
         </repository>
-
-        <!-- PlaceholderAPI -->
         <repository>
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi</url>
-            <snapshots>
+            <releases>
                 <enabled>false</enabled>
-            </snapshots>
+            </releases>
         </repository>
-
-        <!-- GitHub automatic maven builds -->
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
-            <snapshots>
+            <releases>
                 <enabled>false</enabled>
-            </snapshots>
+            </releases>
         </repository>
     </repositories>
 
     <dependencies>
-        <!--Common plugin component-->
         <dependency>
             <groupId>com.github.games647</groupId>
             <artifactId>fastlogin.core</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- PaperSpigot API for correcting user cache usage -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
             <version>1.21.6-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
-            <!-- Use our own newer api version -->
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -192,6 +180,19 @@
         </dependency>
 
         <dependency>
+            <groupId>dev.folia</groupId>
+            <artifactId>folia-api</artifactId>
+            <version>1.21.1-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
             <groupId>com.mojang</groupId>
             <artifactId>datafixerupper</artifactId>
             <version>7.1.15</version>
@@ -204,7 +205,6 @@
             </exclusions>
         </dependency>
 
-        <!--Library for listening and sending Minecraft packets-->
         <dependency>
             <groupId>com.comphenix.protocol</groupId>
             <artifactId>ProtocolLib</artifactId>
@@ -218,11 +218,9 @@
             </exclusions>
         </dependency>
 
-        <!--Changing onlinemode on login process-->
         <dependency>
             <groupId>com.github.ProtocolSupport</groupId>
             <artifactId>ProtocolSupport</artifactId>
-            <!--4.29.dev after commit about API improvements-->
             <version>master-66b494a8dd-1</version>
             <scope>provided</scope>
             <exclusions>
@@ -233,7 +231,6 @@
             </exclusions>
         </dependency>
 
-        <!--Floodgate for Xbox Live Authentication-->
         <dependency>
             <groupId>org.geysermc.floodgate</groupId>
             <artifactId>api</artifactId>
@@ -247,7 +244,6 @@
             </exclusions>
         </dependency>
 
-        <!-- Bedrock player bridge -->
         <dependency>
             <groupId>org.geysermc.geyser</groupId>
             <artifactId>core</artifactId>
@@ -261,7 +257,6 @@
             </exclusions>
         </dependency>
 
-        <!-- We need the API, but it was excluded above -->
         <dependency>
             <groupId>org.geysermc.geyser</groupId>
             <artifactId>api</artifactId>
@@ -275,7 +270,6 @@
             </exclusions>
         </dependency>
 
-        <!--Provide premium placeholders-->
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
@@ -290,7 +284,6 @@
             </exclusions>
         </dependency>
 
-        <!--Login Plugins-->
         <dependency>
             <groupId>fr.xephi</groupId>
             <artifactId>authme</artifactId>
@@ -339,7 +332,6 @@
             <version>2.6</version>
             <scope>provided</scope>
             <optional>true</optional>
-            <!--These artifacts produce conflicts on downloading-->
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
@@ -354,8 +346,6 @@
             <version>v3.3.0</version>
             <scope>provided</scope>
             <optional>true</optional>
-
-            <!-- Exclude dependencies to prevent potential version conflicts-->
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
@@ -364,7 +354,6 @@
             </exclusions>
         </dependency>
 
-        <!--No maven repository :(-->
         <dependency>
             <groupId>de.st_ddt.crazy</groupId>
             <artifactId>CrazyCore</artifactId>
