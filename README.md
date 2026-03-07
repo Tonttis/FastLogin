@@ -35,7 +35,7 @@ side on `Changes`, you can see iterative change sets leading to a specific build
 
 You need to compile it yourself :)
 
-mvn package -pl bukkit -am -DskipTests
+    mvn package -pl bukkit -am -DskipTests
 
 ***
 
