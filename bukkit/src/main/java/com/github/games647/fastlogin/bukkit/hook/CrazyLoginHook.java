@@ -34,7 +34,7 @@ import de.st_ddt.crazylogin.data.LoginPlayerData;
 import de.st_ddt.crazylogin.databases.CrazyLoginDataDatabase;
 import de.st_ddt.crazylogin.listener.PlayerListener;
 import de.st_ddt.crazylogin.metadata.Authenticated;
-import org.bukkit.Bukkit;
+
 import org.bukkit.entity.Player;
 
 import java.util.Optional;
