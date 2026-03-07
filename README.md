@@ -105,7 +105,7 @@ This plugin performs network requests to:
 ### Spigot/Paper
 
 1. Download and install ProtocolLib/ProtocolSupport
-2. Download and install `FastLoginBukkit`
+2. ~Download and install~ `FastLoginBukkit` COMPILE IT YOURSELF, INSTRUCTIONS ABOVE
 3. Set your server in offline mode by setting the value `onlinemode` in your server.properties to `false`
 
 ### BungeeCord/Waterfall or Velocity
