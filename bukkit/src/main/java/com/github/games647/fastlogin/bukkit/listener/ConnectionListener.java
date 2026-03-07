@@ -30,7 +30,7 @@ import com.github.games647.fastlogin.bukkit.FastLoginBukkit;
 import com.github.games647.fastlogin.bukkit.task.FloodgateAuthTask;
 import com.github.games647.fastlogin.bukkit.task.ForceLoginTask;
 import com.github.games647.fastlogin.core.hooks.bedrock.FloodgateService;
-import org.bukkit.Bukkit;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
