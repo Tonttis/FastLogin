@@ -27,7 +27,7 @@ package com.github.games647.fastlogin.bukkit.hook;
 
 import com.github.games647.fastlogin.bukkit.FastLoginBukkit;
 import com.github.games647.fastlogin.core.hooks.AuthPlugin;
-import org.bukkit.Bukkit;
+
 import org.bukkit.entity.Player;
 import ultraauth.api.UltraAuthAPI;
 import ultraauth.managers.PlayerManager;
