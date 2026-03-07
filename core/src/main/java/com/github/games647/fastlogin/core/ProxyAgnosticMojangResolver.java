@@ -27,10 +27,11 @@ package com.github.games647.fastlogin.core;
 
 import com.github.games647.craftapi.model.auth.Verification;
 import com.github.games647.craftapi.resolver.MojangResolver;
-
+import com.github.games647.craftapi.resolver.Options;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.Inet6Address;
 import java.util.Optional;
 
 /**
@@ -43,12 +44,13 @@ import java.util.Optional;
  */
 public class ProxyAgnosticMojangResolver extends MojangResolver {
 
-    public ProxyAgnosticMojangResolver() {
-        super();
+    public ProxyAgnosticMojangResolver(Options options) {
+        super(options);
     }
+
     @Override
     public Optional<Verification> hasJoined(String username, String serverHash, InetAddress hostIp)
-        throws IOException {
+            throws IOException {
         return super.hasJoined(username, serverHash, null);
     }
 }
