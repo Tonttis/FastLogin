@@ -3,13 +3,14 @@
 ![A shield-shaped emblem with a bold lightning bolt on the left, resembling Minecraft blocks. To the right, "FastLogin" is written in teal, with the tagline: "Automatically detect and login premium Minecraft players"](https://github.com/user-attachments/assets/0788ef69-029b-465e-83a2-b8e7bccc6295 "FastLogin project logo.avif")
 
 Checks if a Minecraft player has a paid account (premium). If so, they can skip offline authentication (auth plugins).
-So they don't need to enter passwords. This is also called auto login (auto-login).
+So they don't need to enter passwords. This is also called auto login (auto-login). This also has Folia support for 1.21.11 :)
 
 ## Features
 
 * Detect paid accounts from others
 * Automatically login paid accounts (premium)
 * Support various of auth plugins
+* Folia support (1.21.11)
 * Premium UUID support
 * Forward skins
 * Detect username changed and will update the existing database record
@@ -32,11 +33,9 @@ Development builds contain the latest changes from the Source-Code. They are ble
 but also include features, enhancements and bug fixes that are not yet in a released version. If you click on the left
 side on `Changes`, you can see iterative change sets leading to a specific build.
 
-~~You can download them from here: [CodeMC(Jenkins)](https://ci.codemc.org/job/Games647/job/FastLogin/)~~
+You need to compile it yourself :)
 
-Currently broken due changed usernames. Download it from [here](https://github.com/TuxCoding/FastLogin/releases)
-
-
+mvn package -pl bukkit -am -DskipTests
 
 ***
 
