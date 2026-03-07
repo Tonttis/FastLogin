@@ -29,7 +29,7 @@ import com.github.games647.fastlogin.bukkit.FastLoginBukkit;
 import com.github.games647.fastlogin.core.hooks.AuthPlugin;
 import de.luricos.bukkit.xAuth.xAuth;
 import de.luricos.bukkit.xAuth.xAuthPlayer;
-import org.bukkit.Bukkit;
+
 import org.bukkit.entity.Player;
 
 import java.util.concurrent.ExecutionException;
