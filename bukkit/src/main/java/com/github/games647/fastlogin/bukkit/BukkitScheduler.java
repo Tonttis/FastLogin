@@ -117,7 +117,7 @@ public class BukkitScheduler extends AsyncScheduler {
         }
     }
 
-    private static class FoliaAccessor {
+    private static final class FoliaAccessor {
         static void runAsync(Plugin plugin, Runnable task) {
             Bukkit.getAsyncScheduler().runNow(plugin, t -> task.run());
         }
