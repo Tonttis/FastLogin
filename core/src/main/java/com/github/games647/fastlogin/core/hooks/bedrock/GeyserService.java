@@ -28,6 +28,7 @@ package com.github.games647.fastlogin.core.hooks.bedrock;
 import com.github.games647.fastlogin.core.shared.FastLoginCore;
 import com.github.games647.fastlogin.core.shared.LoginSource;
 import org.geysermc.geyser.GeyserImpl;
+import org.geysermc.geyser.api.GeyserApi;
 import org.geysermc.geyser.api.network.AuthType;
 import org.geysermc.geyser.session.GeyserSession;
 
@@ -43,7 +44,7 @@ public class GeyserService extends BedrockService<GeyserSession> {
         super(core);
         this.geyser = geyser;
         this.core = core;
-        this.authType = GeyserImpl.getInstance().getConfig().getRemote().authType();
+        this.authType = GeyserApi.api().defaultRemoteServer().authType();
     }
 
     @Override
