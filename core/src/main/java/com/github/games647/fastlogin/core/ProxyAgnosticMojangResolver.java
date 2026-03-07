@@ -31,7 +31,6 @@ import com.github.games647.craftapi.resolver.Options;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.Inet6Address;
 import java.util.Optional;
 
 /**
