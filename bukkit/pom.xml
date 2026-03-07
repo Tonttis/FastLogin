@@ -1,4 +1,4 @@
-<!-1.21.1-R0.1-SNAPSHOT-
+<!--
     SPDX-License-Identifier: MIT
 
     The MIT License (MIT)
@@ -29,7 +29,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <maven.compiler.release>8</maven.compiler.release>
+                <maven.compiler.release>21</maven.compiler.release>
     </properties>
 
     <parent>
@@ -182,7 +182,7 @@
         <dependency>
             <groupId>dev.folia</groupId>
             <artifactId>folia-api</artifactId>
-            <version>1.21.1-R0.1-SNAPSHOT</version>
+                        <version>1.21.11-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
